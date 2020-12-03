@@ -8,3 +8,10 @@ L'objectif est de mettre à disposition une application qui permet aux utilisate
 ## Choix techniques 
 
 Selon nous, l'architecture 3-tiers (Client + FrontEnd + BackEnd) semble le plus adapté. Pour une portabilitée au maximum sur tout les appareils, nous allons créer une application web.
+
+- Frontend : Angular Frontend 
+- Backend : Angular 
+- Database : PostgreSQL
+- Liaision backend <-> database : GraphQL
+
+Afin d'assurer la portabilitée au maximum de l'application et sa saccalabilitée nous décidons de nous orienté vers une architecture microservice. Celui-ci s'articulira autour de {Container  docker couplé à un K8s ??} ainsi que d'un storage déporté pour s'assurer que les containers sont stateless. 
