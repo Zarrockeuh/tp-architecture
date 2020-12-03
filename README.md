@@ -46,6 +46,6 @@ Votre deisgn devra se trouver dans le fichier ```projet/E1-DESIGN.md```
 Implémentez votre solution, votre code devra se trouver dans le dossier ```project/code```
 Lorsque vous avez terminé, venez me voir pour la suite...
 
-## Etpae 3
+## Etape 3
 
 Surprise !
