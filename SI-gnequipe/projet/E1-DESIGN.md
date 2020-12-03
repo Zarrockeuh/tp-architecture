@@ -1,3 +1,5 @@
 # Design Etape 1
 
-[Diagramm Class](../images/ClassDiagram.png)
+## Class Diagramm
+
+ <img src="../images/ClassDiagram.png" title="Class Diagram for the Design task">
