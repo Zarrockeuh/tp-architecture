@@ -15,6 +15,10 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input'; 
+import { MatFormFieldModule } from '@angular/material/form-field'; 
+import { MatButtonModule } from '@angular/material/button'; 
 
 import { AuthInterceptorProviders } from './_helpers/auth.interceptor';
 
@@ -37,6 +41,10 @@ import { AuthInterceptorProviders } from './_helpers/auth.interceptor';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    MatCardModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
   ],
   providers: [AuthInterceptorProviders],
   bootstrap: [AppComponent]
