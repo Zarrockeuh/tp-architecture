@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +12,11 @@ import { FlightReservationComponent } from './flight-reservation/flight-reservat
 import { AlreadyReservedComponent } from './already-reserved/already-reserved.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RegisterComponent } from './register/register.component';
+
+import { AuthInterceptorProviders } from './_helpers/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -18,27 +25,20 @@ import { WelcomeComponent } from './welcome/welcome.component';
     FlightReservationComponent,
     AlreadyReservedComponent,
     PageNotFoundComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    LoginComponent,
+    ProfileComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    RouterModule.forRoot([
-      {path: 'flight-list', component:
-    FlightListComponent},
-      {path: 'flight-reservation', component:
-      FlightReservationComponent},
-      {path: 'already-reserved', component:
-    AlreadyReservedComponent},
-      {path: '', component:
-    WelcomeComponent},
-      {path: '**', component:
-      PageNotFoundComponent},
-    ])
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [AuthInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
