@@ -38,12 +38,9 @@
     </mat-form-field>
     
     <button mat-raised-button id="login-button"  color="primary">Login</button>
-      <div>
-        <div *ngIf="f.submitted && isLoginFailed">Login failed: {{ errorMessage }}</div>
-      </div>
+    <div>
+      <div *ngIf="f.submitted && isLoginFailed">Login failed: {{ errorMessage }}</div>
+    </div>
   </form>
-  <div *ngIf="isLoggedIn">
-    Logged in as {{ form.username }}.
-  </div>
-  
+  <div *ngIf="isLoggedIn">Logged in as {{ form.username }}.</div>
 </mat-card>
