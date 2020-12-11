@@ -16,15 +16,8 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Sync with the database and creating basic roles (ONLY FOR DEVELOPPEMENT, IN PRODUCTION NEEDS TO BE WITH HAND and removing 
-//  {force: true}).then(() => {
-//  console.log('Drop and Resync Db');
-//  initial();
-//  })
-
-
-const db = require("./app/models");
-const Role = db.role;
+const db = require("./app/models/index.js");
+const { flight } = require("./app/models/index.js");
 
 db.sequelize.sync();
   
@@ -36,10 +29,7 @@ app.get("/", (req, res) => {
 // Routes for authentication API
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
-
-// Routes for flight API
-//require('./app/routes/flight.routes')(app);
-
+require('./app/routes/flight.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
