@@ -3,8 +3,6 @@
 ## Information Databse
 Infos nécessaire à la configuration de la base et du middleware.
 - Database : airportdb
-- User (Unix) : airportuser
-- Password (Unix) : airportpassword
 - User (Postgres) : airportdbuser
 - Database (Postgres) : airportdbpassword
 
