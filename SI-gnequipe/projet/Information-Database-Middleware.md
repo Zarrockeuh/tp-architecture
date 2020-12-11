@@ -148,8 +148,8 @@ ALTER TABLE public.reservation OWNER to airportdbuser;
 
 Maintenant que les tables sont insérés en base, on effectue un backup "clean":
 
-```sh
-/usr/bin/pg_dump --file "/emplacementBackup" --host "127.0.0.1" --port "5432" --username "postgres" --no-password --verbose --role "airportdbuser" --format=c --blobs --encoding "UTF8" "airportdb"
+```Shell
+/usr/bin/pg_dump --file "/emplacementBackup/fileName" --host "127.0.0.1" --port "5432" --username "postgres" --no-password --verbose --role "airportdbuser" --format=c --blobs --encoding "UTF8" "airportdb"
 ```
 
 ## Insertions des données essentielles à l'applications 
@@ -196,4 +196,10 @@ INSERT INTO flight (hdep, harr, nbstop, stop, departure, arrival) VALUES
 (SELECT trigramme FROM airport WHERE city='New York'),
 (SELECT trigramme FROM airport WHERE city='Paris'))
 ;
+```
+
+Maintenant que les données de bases sont insérés en base, on effectue un backup "data-inserted":
+
+```Shell
+/usr/bin/pg_dump --file "/emplacementBackup/fileName" --host "127.0.0.1" --port "5432" --username "postgres" --no-password --verbose --role "airportdbuser" --format=c --blobs --section=pre-data --section=data --section=post-data --encoding "UTF8" "airportdb"
 ```
