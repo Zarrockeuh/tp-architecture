@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./flight-list.component.css']
 })
 export class FlightListComponent implements OnInit {
-  numbers: string[] = ['1', '2', '3', '4', '5'];
+  numbers: string[] = ['Je pete ma biere', 'Ma LUBULULLE', 'GNE'];
 
   
   constructor() { }
