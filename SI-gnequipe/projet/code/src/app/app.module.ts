@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input'; 
 import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { MatButtonModule } from '@angular/material/button'; 
+import { MatListModule } from '@angular/material/list'; 
 
 import { AuthInterceptorProviders } from './_helpers/auth.interceptor';
 
@@ -32,7 +33,8 @@ import { AuthInterceptorProviders } from './_helpers/auth.interceptor';
     WelcomeComponent,
     LoginComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,8 @@ import { AuthInterceptorProviders } from './_helpers/auth.interceptor';
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatListModule,
+    
   ],
   providers: [AuthInterceptorProviders],
   bootstrap: [AppComponent]
