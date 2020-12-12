@@ -17,8 +17,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require("./app/models/index.js");
-const { flight } = require("./app/models/index.js");
-
 db.sequelize.sync();
   
 // simple route
@@ -30,6 +28,7 @@ app.get("/", (req, res) => {
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/flight.routes')(app);
+require('./app/routes/reservation.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
