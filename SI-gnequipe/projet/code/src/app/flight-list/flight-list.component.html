@@ -1,1 +1,11 @@
-<p>flight-list works!</p>
+<mat-card>
+    <mat-selection-list #items [multiple]="false">
+        <mat-list-option *ngFor="let item of numbers" [value]="item">
+            {{item}}
+        </mat-list-option>
+    </mat-selection-list>
+
+    <p>
+        Vol selectionné : {{items.selectedOptions.selected[0]?.value}}
+    </p>
+</mat-card>
