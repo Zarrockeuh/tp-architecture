@@ -21,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list'; 
 
 import { AuthInterceptorProviders } from './_helpers/auth.interceptor';
+import { LoggedoutComponent } from './loggedout/loggedout.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AuthInterceptorProviders } from './_helpers/auth.interceptor';
     WelcomeComponent,
     LoginComponent,
     RegisterComponent,
+    LoggedoutComponent,
     
   ],
   imports: [

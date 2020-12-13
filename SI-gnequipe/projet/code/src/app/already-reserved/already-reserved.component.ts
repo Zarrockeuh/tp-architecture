@@ -12,11 +12,13 @@ export class AlreadyReservedComponent implements OnInit {
   content?: any;
   displayContent?: any;
   useremail?: string;
+  isLoggedIn = false;
   constructor(private tokenStorage: TokenStorageService, private flightService: FlightService ) { }
 
   ngOnInit(): void {
     if(this.tokenStorage.getToken()) {
       this.useremail = this.tokenStorage.getUser().email;
+      this.isLoggedIn = true;
     }
     this.flightService.getAlreadyReserved().subscribe(
       data => {
@@ -26,19 +28,6 @@ export class AlreadyReservedComponent implements OnInit {
         this.content = JSON.parse(err.error).message;
       }
     )
-    //alert(this.useremail);
-    /*
-      var j: number = 0;
-      for(let i of this.content) {
-        if(this.content[i].useremail == this.useremail) {
-          this.displayContent[j].id.push(this.content[i].id) ;
-          j++;
-        }
-      }
-  */ 
-      if(this.content[0].useremail == this.useremail){
-        alert("Salut");
-      }
     }
 
 }
