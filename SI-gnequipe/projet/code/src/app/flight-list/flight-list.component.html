@@ -1,11 +1,15 @@
 <mat-card>
-    <mat-selection-list #items [multiple]="false">
-        <mat-list-option *ngFor="let item of numbers" [value]="item">
-            {{item}}
+    <mat-selection-list #flights [multiple]="false">
+        <mat-list-option *ngFor="let flight of content" [value]="flight">
+           <li> {{ flight.id }} | {{ flight.departure }} to  {{ flight.arrival }} | Heure de départ : {{ flight.hdep }} | Heure d'arrivée : {{ flight.harr }} | <div *ngIf="flight.nbstop != null" >Nombre d'escale : {{ flight.nbstop }} | Ville d'escale : {{ flight.stop }} </div> </li>
         </mat-list-option>
+        
     </mat-selection-list>
 
-    <p>
-        Vol selectionné : {{items.selectedOptions.selected[0]?.value}}
-    </p>
+
 </mat-card>
+
+<p STYLE="text-align: center; font-size: 23px; padding-top: 20px;">
+    Vol selectionné : {{ flights.selectedOptions.selected[0]?.value.id }} {{ flights.selectedOptions.selected[0]?.value.departure }} {{ flights.selectedOptions.selected[0]?.value.arrival }} 
+</p>
+

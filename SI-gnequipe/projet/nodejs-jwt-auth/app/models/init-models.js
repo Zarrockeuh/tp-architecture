@@ -20,8 +20,8 @@ function initModels(sequelize) {
   users.hasMany(reservation, { foreignKey: "useremail"});
   reservation.belongsTo(flight, { foreignKey: "flightid"});
   flight.hasMany(reservation, { foreignKey: "flightid"});
-  reservation.belongsTo(plane, { foreignKey: "planeid"});
-  plane.hasMany(reservation, { foreignKey: "planeid"});
+  flight.belongsTo(plane, { foreignKey: "planeid"});
+  plane.hasMany(flight, { foreignKey: "planeid"});
 
   return {
     airport,

@@ -15,14 +15,6 @@ module.exports = function(sequelize, DataTypes) {
         key: 'email'
       }
     },
-    planeid: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'plane',
-        key: 'id'
-      }
-    },
     flightid: {
       type: DataTypes.INTEGER,
       allowNull: false,

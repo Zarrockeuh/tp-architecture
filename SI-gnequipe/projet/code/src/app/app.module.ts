@@ -13,7 +13,6 @@ import { AlreadyReservedComponent } from './already-reserved/already-reserved.co
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input'; 
@@ -32,7 +31,6 @@ import { AuthInterceptorProviders } from './_helpers/auth.interceptor';
     PageNotFoundComponent,
     WelcomeComponent,
     LoginComponent,
-    ProfileComponent,
     RegisterComponent,
     
   ],

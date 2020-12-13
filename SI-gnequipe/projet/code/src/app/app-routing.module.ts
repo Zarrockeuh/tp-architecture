@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
 import { FlightListComponent } from './flight-list/flight-list.component';
 import { FlightReservationComponent } from './flight-reservation/flight-reservation.component';
 import { AlreadyReservedComponent } from './already-reserved/already-reserved.component';
@@ -14,7 +13,6 @@ import { WelcomeComponent } from './welcome/welcome.component';
 const routes: Routes = [
   {path : 'register', component: RegisterComponent},
   {path : 'login', component: LoginComponent},
-  {path : 'profile', component: ProfileComponent},
   {path : 'flight-list', component: FlightListComponent},
   {path : 'flight-reservation', component: FlightReservationComponent},
   {path : 'already-reserved', component: AlreadyReservedComponent},

@@ -58,21 +58,26 @@ INSERT INTO plane (nbseats, brand) VALUES
 Insertion des vols dans la table "flight":
 
 ```SQL
-INSERT INTO flight (hdep, harr, nbstop, stop, departure, arrival) VALUES
+INSERT INTO flight (hdep, harr, nbstop,stop,planeid, departure, arrival) VALUES
 ('12:00:00', '20:35:00',NULL,NULL,
+(SELECT id from plane WHERE brand='Airbus' AND nbseats='50'),
 (SELECT trigramme FROM airport WHERE city='Paris'),
 (SELECT trigramme FROM airport WHERE city='New York')), 
 ('13:00:00', '21:50:00',NULL,NULL,
+(SELECT id from plane WHERE brand='Airbus' AND nbseats='40'),
 (SELECT trigramme FROM airport WHERE city='Paris'),
 (SELECT trigramme FROM airport WHERE city='Detroit')),
 ('09:00:00', '10:50:00',NULL,NULL,
+(SELECT id from plane WHERE brand='Boeing' AND nbseats='50'),
 (SELECT trigramme FROM airport WHERE city='Detroit'),
 (SELECT trigramme FROM airport WHERE city='New York')),
 ('20:00:00', '04:35:00',NULL,NULL,
+(SELECT id from plane WHERE brand='Airbus' AND nbseats='100'),
 (SELECT trigramme FROM airport WHERE city='New York'),
 (SELECT trigramme FROM airport WHERE city='Paris')),
 ('20:20:00', '08:00:00',1,
 (SELECT trigramme FROM airport WHERE city='Detroit'),
+(SELECT id from plane WHERE brand='Airbus' AND nbseats='50'),
 (SELECT trigramme FROM airport WHERE city='New York'),
 (SELECT trigramme FROM airport WHERE city='Paris'))
 ;

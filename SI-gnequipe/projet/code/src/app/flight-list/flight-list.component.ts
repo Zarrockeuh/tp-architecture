@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FlightService } from '../_services/flight.service';
 
 @Component({
   selector: 'app-flight-list',
@@ -6,12 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./flight-list.component.css']
 })
 export class FlightListComponent implements OnInit {
-  numbers: string[] = ['Vol 1', 'Vol 2', 'Vol 3'];
-
+ content?: any;
   
-  constructor() { }
+  constructor(private flightService: FlightService) { }
 
   ngOnInit(): void {
+    this.flightService.getFlightList().subscribe(
+      data => {
+         this.content = data.Flight;
+
+      },
+      err => {
+        this.content = JSON.parse(err.error).message;
+      } 
+    );
   }
 
 }
