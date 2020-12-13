@@ -46,7 +46,7 @@ Cela créera directement les conteneurs en suivant les directives du fichier YAM
 
 4. Profitez !
 
-Pour accèder à l'applicatio, ouvrez votre navigateur et rendez-vous sur http://localhost:8081/
+Pour accèder à l'application, ouvrez votre navigateur et rendez-vous sur http://localhost:8081/
 
 ### 2ème Solution : 
 
