@@ -8,6 +8,7 @@ import { FlightReservationComponent } from './flight-reservation/flight-reservat
 import { AlreadyReservedComponent } from './already-reserved/already-reserved.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { LoggedoutComponent} from './loggedout/loggedout.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path : 'flight-list', component: FlightListComponent},
   {path : 'flight-reservation', component: FlightReservationComponent},
   {path : 'already-reserved', component: AlreadyReservedComponent},
+  {path : 'loggedout', component: LoggedoutComponent},
   {path : '', component: WelcomeComponent},
   {path : '**', component: PageNotFoundComponent},
 

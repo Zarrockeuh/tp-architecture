@@ -43,5 +43,5 @@
       <div *ngIf="f.submitted && isLoginFailed">Login failed: {{ errorMessage }}</div>
     </div>
   </form>
-  <div *ngIf="isLoggedIn">Logged in as {{ form.email }}.</div>
+  <div *ngIf="isLoggedIn">Logged in as {{ this.form.email }}.</div>
 </mat-card>
