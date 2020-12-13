@@ -1,5 +1,5 @@
 module.exports = {
-    HOST: "192.168.1.39",
+    HOST: "dtb",
     USER: "airportdbuser",
     PASSWORD: "airportdbpassword",
     DB: "airportdb",

@@ -1,6 +1,6 @@
 {
-  "name": "code",
-  "version": "0.0.0",
+  "name": "nodejs-frontend-tp-distributed-systems",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
