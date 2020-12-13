@@ -1,7 +1,7 @@
 <mat-card>
     <mat-selection-list #flights [multiple]="false">
         <mat-list-option *ngFor="let flight of content" [value]="flight">
-           <li> {{ flight.id }} | {{ flight.departure }} to  {{ flight.arrival }} | Nombre d'arrêt : {{ flight.nbstop }} | Ville d'arrêt : {{ flight.stop }} </li>
+           <li> {{ flight.id }} | {{ flight.departure }} to  {{ flight.arrival }} | Heure de départ : {{ flight.hdep }} | Heure d'arrivée : {{ flight.harr }} | <div *ngIf="flight.nbstop != null" >Nombre d'escale : {{ flight.nbstop }} | Ville d'escale : {{ flight.stop }} </div> </li>
         </mat-list-option>
         
     </mat-selection-list>

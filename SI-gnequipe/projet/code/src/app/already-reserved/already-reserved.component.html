@@ -1,1 +1,11 @@
-<p>already-reserved works!</p>
+<h2 STYLE="text-align: center;">Vous avez réservé une place <br> sur les vols suivants : </h2> 
+
+
+<mat-card STYLE=" text-align: center; font-size: 15px; padding:auto;">
+    <div *ngFor="let item of content">
+        <li *ngIf="item.useremail == this.useremail"> Vol n°: {{ item.flightid }} </li>
+    </div>
+</mat-card>
+
+
+    

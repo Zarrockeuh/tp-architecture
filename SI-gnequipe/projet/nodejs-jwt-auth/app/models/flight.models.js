@@ -23,6 +23,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true
     },
+    planeid: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'plane',
+        key: 'id'
+      }
+    },
     departure: {
       type: DataTypes.STRING(255),
       allowNull: false,
@@ -39,7 +47,8 @@ module.exports = function(sequelize, DataTypes) {
         key: 'trigramme'
       }
     }
-  }, {
+  },
+   {
     sequelize,
     tableName: 'flight',
     schema: 'public',

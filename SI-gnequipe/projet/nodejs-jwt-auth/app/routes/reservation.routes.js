@@ -9,7 +9,9 @@ module.exports = function(app) {
             next();
         });
         app.get(
-            "/api/reservation/list",
+            "/api/flight/alreadyreserved",
             controller.reservationList
         );
+
+        app.post("/api/flight/reservation", controller.createReservation);
 }

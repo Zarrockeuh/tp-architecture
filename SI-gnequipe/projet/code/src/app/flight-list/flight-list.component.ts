@@ -7,15 +7,6 @@ import { FlightService } from '../_services/flight.service';
   styleUrls: ['./flight-list.component.css']
 })
 export class FlightListComponent implements OnInit {
-  /*
-  id?: string[];
-  hdep?: string[];
-  harr?: string[];
-  nbstop?: string[];
-  stop?: string[];
-  departure?: string[];
-  arrival?: string[];
-  */
  content?: any;
   
   constructor(private flightService: FlightService) { }
