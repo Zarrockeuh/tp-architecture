@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-jwt-auth",
+  "name": "nodejs-backend-tp-distributed-systems",
   "version": "1.0.0",
   "description": "Middleware to authentification token with Angular front and PostgreSQL database",
   "main": "index.js",
@@ -14,7 +14,7 @@
     "authentification",
     "postgresql"
   ],
-  "author": "Zarrockeuh",
+  "author": "Zarrockeuh (Killian Peres)",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
