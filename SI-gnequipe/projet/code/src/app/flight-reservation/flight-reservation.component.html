@@ -1,0 +1,36 @@
+<mat-card class="reservation" *ngIf="isLoggedIn == true">
+
+    <div >
+        <p>
+           Veuillez indiquer le vol que vous souhaitez réserver. 
+            <mat-selection-list #flights [multiple]="false" >
+                <mat-list-option *ngFor="let flight of content" [value]="flight" >
+                <li> {{ flight.id }} | {{ flight.departure }} to  {{ flight.arrival }} | Heure de départ : {{ flight.hdep }} | Heure d'arrivée : {{ flight.harr }} | <div *ngIf="flight.nbstop != null" >Nombre d'escale : {{ flight.nbstop }} | Ville d'escale : {{ flight.stop }} </div> </li>
+                </mat-list-option>
+            </mat-selection-list>
+        </p>
+        <!-- Affichage du vol, ou la demande de séléction d'un element -->
+        <p STYLE="text-align: center; font-size: 23px; padding-top: 20px;" *ngIf="flights.selectedOptions.selected[0]?.value.id != null && this.isReserved== false" >
+            Vol selectionné : {{ flights.selectedOptions.selected[0]?.value.id }} {{ flights.selectedOptions.selected[0]?.value.departure }} {{ flights.selectedOptions.selected[0]?.value.arrival }} 
+        </p>
+
+        <p STYLE="text-align: center; font-size: 23px; padding-top: 20px;" *ngIf="flights.selectedOptions.selected[0]?.value.id == null && this.isReserved== false">
+            Veuillez sélectionner un vol 
+        </p>
+
+        <p STYLE="text-align: center; font-size: 23px; padding-top: 20px;" *ngIf="this.isReserved== true">
+            Vous avez bien réservé un vol ! <br><br>
+            Ce vol est le vol n°{{ this.flightId }} au départ de  {{ flights.selectedOptions.selected[0]?.value.departure }} et à l'arrivée de {{ flights.selectedOptions.selected[0]?.value.arrival }} 
+        </p>
+
+        <!-- Bouton de réservation -->
+        <div STYLE="text-align: center;" *ngIf="flights.selectedOptions.selected[0]?.value.id != null && this.isReserved== false">
+           <button mat-raised-button id="reservation-button" (click)="submitReservation(flights.selectedOptions.selected[0]?.value.id, 150)" color="primary">Réserver</button> 
+
+        </div>
+    </div>
+</mat-card>
+
+<div *ngIf="isLoggedIn != true">
+    <h2 STYLE="text-align: center;"> Veuillez vous connecter pour réserver un vol. </h2> 
+</div>
