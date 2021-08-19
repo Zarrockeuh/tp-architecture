@@ -37,14 +37,15 @@ jobs:
     
     - name: Create namespace
       run: |
-        namespacePresent=`kubectl get namespace | grep k8s_cluster_devad3a | wc -l`
+        namespacePresent=`kubectl get namespace | grep k8s-cluster-devad3a | wc -l`
         if [ $namespacePresent -eq 0 ]
         then
-            echo `kubectl create namespace k8s_cluster_devad3a`
+            echo `kubectl create namespace k8s-cluster-devad3a`
         fi
 
     - uses: azure/k8s-create-secret@v1
       with:
+        namespace: k8s-cluster-devad3a
         container-registry-url: containerregistryprivate.azurecr.io
         container-registry-username: ${{ steps.create-acr.outputs.acr_username }}
         container-registry-password: ${{ steps.create-acr.outputs.acr_password }}
@@ -52,7 +53,7 @@ jobs:
        
     - uses: azure/k8s-deploy@v1.2
       with:
-        namespace: k8s_cluster_devad3a
+        namespace: k8s-cluster-devad3a
         manifests: |
           manifests/deployment.yml
           manifests/service.yml
