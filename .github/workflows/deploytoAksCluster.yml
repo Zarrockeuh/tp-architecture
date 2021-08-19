@@ -1,0 +1,63 @@
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - uses: actions/checkout@master
+    
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Create ACR
+      id: create-acr
+      run: |
+        az acr create -n containerRegistryPrivate -g containerRegistryPrivate852c-rg --location "France Central" --sku Standard --admin-enabled
+        echo "::set-output name=acr_username::`az acr credential show -n containerRegistryPrivate --query username | xargs`"
+        echo "::set-output name=acr_password::`az acr credential show -n containerRegistryPrivate --query passwords[0].value | xargs`"
+        echo "::add-mask::`az acr credential show -n containerRegistryPrivate --query passwords[0].value | xargs`"
+
+    - uses: azure/docker-login@v1
+      with:
+        login-server: containerregistryprivate.azurecr.io
+        username: ${{ steps.create-acr.outputs.acr_username }}
+        password: ${{ steps.create-acr.outputs.acr_password }}
+
+    - name: Build and push image to ACR
+      id: build-image
+      run: |
+        docker build "$GITHUB_WORKSPACE/SI-gnequipe/projet/postgres" -f  "SI-gnequipe/projet/postgres/Dockerfile" -t containerregistryprivate.azurecr.io/k8sclusterdev:${{ github.sha }} --label dockerfile-path=SI-gnequipe/projet/postgres/Dockerfile
+        docker push containerregistryprivate.azurecr.io/k8sclusterdev:${{ github.sha }}
+    
+    - uses: azure/k8s-set-context@v1
+      id: login
+      with:
+         kubeconfig: ${{ secrets.aks_k8sclusterdev_kubeConfig }}
+    
+    - name: Create namespace
+      run: |
+        namespacePresent=`kubectl get namespace | grep k8s_cluster_devad3a | wc -l`
+        if [ $namespacePresent -eq 0 ]
+        then
+            echo `kubectl create namespace k8s_cluster_devad3a`
+        fi
+
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: k8s_cluster_devad3a
+        container-registry-url: containerregistryprivate.azurecr.io
+        container-registry-username: ${{ steps.create-acr.outputs.acr_username }}
+        container-registry-password: ${{ steps.create-acr.outputs.acr_password }}
+        secret-name: k8sclusterdedockerauth
+       
+    - uses: azure/k8s-deploy@v1.2
+      with:
+        namespace: k8s_cluster_devad3a
+        manifests: |
+          manifests/deployment.yml
+          manifests/service.yml
+        images: |
+          containerregistryprivate.azurecr.io/k8sclusterdev:${{ github.sha }}
+        imagepullsecrets: |
+          k8sclusterdedockerauth   
